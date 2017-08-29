@@ -15,7 +15,11 @@
 
     <!-- Custom styles for this template -->
     <link href="../css/modern-business.css" rel="stylesheet">
-    <link href="../css/nuevoCSS.css" rel="stylesheet"></link>
+    <link href="../css/nuevoCSS.css" rel="stylesheet" type="text/css">
+    <script> function capturar(){
+    	var valorname = document.f1.nombre.value
+    }
+    </script>
 
 
 
@@ -82,6 +86,30 @@
         </div>
       </div>
       <!-- /.row -->
+          <!-- Page Content -->
+      <div class="container">
+      <!-- Marketing Icons Section -->
+      <h1 class="my-4">capturar texto</h1>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card h-100">
+            <h4 class="card-header">capturar texto</h4>
+            <div class="card-body">
+            <form name="f1">
+	            <input type="text" class="col-lg-8" name="nombre" onchange="document.getElementById('elemento1').innerHTML = valorname = this.value">
+              <a class="btn btn-primary" onclick="capturar()">capturar</a>
+		        </form>
+
+		        <br><br>
+		        <ul>
+		            <li id="elemento1"></li>
+		        </ul>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
 
       <!-- Portfolio Section -->
       <h1 class="my-4">Desarrollo</h1>
@@ -121,7 +149,8 @@
               <h4 class="card-title">
                 <a>Nivel pro: (nota máxima 7,0)</a>
               </h4>
-              <P class="card-text">Modifique  el  estilo  de  alguno  de  los  elementos  anteriormente  añadidos ,  agregando  una  nueva hoja de estilos,  con un nuevo estilo.  Esta modificación puede  ser cambiar  el  tamaño  de  las  letras,  el  color de fondo, agregar  un  borde a algún elemento,  etc .</P>
+              <p class="especial"> Texto modificado con mi hoja de estilos </p>
+              <p class="especial">Modifique  el  estilo  de  alguno  de  los  elementos  anteriormente  añadidos ,  agregando  una  nueva hoja de estilos,  con un nuevo estilo.  Esta modificación puede  ser cambiar  el  tamaño  de  las  letras,  el  color de fondo, agregar  un  borde a algún elemento,  etc .</p>
               <p class="card-text">Modifique un estilo  ya  existe nte  de  su template de  Bootstrap , indicando un comentario en el  código que indique la modificación realizada .</p>
               <P class="card-text">Crear texto dinámico: e n la misma página  d o nde agregó  un text o plano en el punto 2 ,  añada un nuevo botón . Al  hacer clic en  este botón,  dicho texto  deberá cambiar por una entrada de  datos (input) que contenga al texto en cuestión.</P>
             </div>
@@ -183,8 +212,6 @@
     </footer>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script src="../vendor/popper/popper.min.js"></script>
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <script>
         document.getElementById("p2").style.color = "blue";

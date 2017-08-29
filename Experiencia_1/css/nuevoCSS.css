@@ -1,10 +1,5 @@
 
-h1 {
-    color: white;
-    text-align: center;
+.especial {
+color : green;
+border: solid red;
 }
-
-p {
-    font-family: verdana;
-    font-size: 20px;
-    color: red;
