@@ -1,0 +1,26 @@
+<div class="container-fluid">
+	<div class="row">
+		<h1>Editar Usuario</h1>
+		<div class="col-md-6">
+			<form method="post" action="/Actualizar">
+					<input type="hidden" name="id" value="<%=user[0].id%>">
+
+		        	<div class="form-group">
+			        	<label>Nombre</label>
+			        	<input value="<%=user[0].name%>" type="text" class="form-control" name="name">
+			        </div>	
+			        <div class="form-group">	
+			        	<label>Apellido</label>
+			        	<input value="<%=user[0].lastname%>" type="text" class="form-control" name="lastname">
+			        	<label>Email</label>
+			        </div>
+			        <div class="form-group">	
+			        	<input value="<%=user[0].email%>" type="email" class="form-control" name="email">
+		        	</div>
+		        	<div class="form-group">
+		        		<input type="submit" class="btn btn-success" name="editar">
+		        	</div>
+		    </form>
+       </div> 
+	</div>
+</div>
