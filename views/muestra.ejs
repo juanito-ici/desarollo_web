@@ -1,27 +1,38 @@
+<br>
 <div class="container-fluid">
   <div class="panel panel-info">
   <div class="panel-heading">
-    <h3 class="panel-title">Demostracion de crud Personas</h3>
+    <h3 class="panel-title">CRUD alumnos</h3>
   </div>
   <div class="panel-body">
-  	<button class="btn btn-success" data-toggle="modal" data-target="#myModal">Agregar nuevo Usuario</button>	
+  	<button class="btn btn-success" data-toggle="modal" data-target="#myModal1">Agregar nuevo alumno</button>	
     <table class="table table-striped">
       <thead>
         <tr>
           <th>Nombre</th>
           <th>Apellido</th>
-          <th>Email</th>
+          <th>Edad</th>
+          <th>Promedio</th>
+          <th>Estado</th>
           <th>Opciones</th>
         </tr>
       </thead>
       <tbody>
-      	<% _.each(users, function(user) { %>
+      	<% _.each(students, function(student) { %>
 			<tr>
-				<td><%= user.name %></td>
-				<td><%= user.lastname %></td>
-				<td><%= user.email %></td>
-				<td><a class="btn btn-primary" href="/Editar/<%=user.id%>">Editar</a>
-					<a class="btn btn-danger" href="/Eliminar/<%=user.id%>">Eliminar</a>
+				<td><%= student.name %></td>
+				<td><%= student.lastname %></td>
+				<td><%= student.age%></td>
+				<td><%= student.average%></td>
+				<td>
+				  <script>
+				    if(<%=student.average%> < 4)
+				      document.write("Reprobado");
+				    else document.write("Aprobado");
+				  </script>
+				</td>
+				<td><a class="btn btn-primary" href="/Editar/<%=student.id%>">Editar promedio</a>
+					<a class="btn btn-danger" href="/Eliminar/<%=student.id%>">Eliminar</a>
 				</td>
 			</tr>
 			<% }) %>	
@@ -30,11 +41,8 @@
   </div>
 </div>
 
-
-
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal1" class="modal fade" role="dialog">
   <div class="modal-dialog">
-
   <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -45,25 +53,51 @@
         <form method="POST" action="/Agregar">
         	<div class="form-group">
 	        	<label>Nombre</label>
-	        	<input type="text" class="form-control" name="name">
+	        	<input type="text" class="form-control" name="name" required>
 	        </div>	
 	        <div class="form-group">	
 	        	<label>Apellido</label>
-	        	<input type="text" class="form-control" name="lastname">
-	        	<label>Email</label>
+	        	<input type="text" class="form-control" name="lastname" required>
 	        </div>
-	        <div class="form-group">	
-	        	<input type="email" class="form-control" name="email">
-	        	<input type="submit" name="">
+	        <div class="form-group">
+	        	<label>Edad</label>	
+	        	<input type="text" class="form-control" name="age" onkeypress="return valida(event)" maxlength=2  required>
         	</div>
+        	<div class="form-group">
+	        	<label>Promedio</label>	
+	        	<input type="text" class="form-control" name="average" onkeypress="return promedio(event)" required>
+        	</div>
+        	<div class="form-group">
+        	  <input type="submit" name="">
+        	  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
-</div>    
+</div>
 
 
+<script>
+    function valida(e){
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla==8){
+            return true;
+        }
+        patron =/[0-9]/;
+        tecla_final = String.fromCharCode(tecla);
+        return patron.test(tecla_final);
+    }
+</script>
+<script>
+    function promedio(e){
+        tecla = (document.all) ? e.keyCode : e.which;
+        if (tecla==8){
+            return true;
+        }
+        patron = /^[0-9]+([,][0-9]+)?$/;
+        tecla_final = String.fromCharCode(tecla);
+        return patron.test(tecla_final);
+    }
+</script>
 </div>
